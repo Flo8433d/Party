@@ -1,0 +1,58 @@
+#################################################
+#												#
+#    Plugin made by HyChrod, Version: 1.0.0 	#
+#												#
+#################################################
+
+Party:
+  Prefix: "&6[&9Party&6]"
+  CheckForUpdates: true
+  
+  Options:
+    # This is the maximum amount of players in one party!
+    PlayerLimit: 5
+    # Player with a special permission are able to invite more players!
+    # Permission:
+    # - Party.ExtendedFriends
+    ExtendedPlayerLimit: 25
+    # If this is enabled the party will be dissolved when the leader leaves the server
+    # If this is disabled a new random leader will be choosen when the previous one leaves the server
+    DeleteOnQuit: true
+   
+    # This is the party-chat where all player in a party can communicate with each other
+    # If you disable this all posibillities to communicate within the party will be removed
+    PartyChat:
+      Enable: true
+      # The message have to start with this to write in the party chat!
+      Code: "@party"
+      # If this is enabled player with special permissions are able to see the partychat of other players
+      # This can be used to control the partychat by admins
+      # Permission:
+      # - Party.Commands.SpyChat
+      SpyChat:
+        Enable: true
+        Format: "&3%PLAYER% &9[PARTYCHAT] &f| %MESSAGE%"
+  
+  # If you're using my fried-plugin too please enable this
+  # You will be able to manage some party options within the gui
+  # <https://www.spigotmc.org/resources/friends2-0-mc1-8-x-1-10-x.12063/>
+  Friends2_0:
+    Enable: false
+    # If this is enabled you can only send party requests to your friends
+    # If this is disabled you can send a request to everyone
+    OnlyFriends: true
+    # You can only use the party system with the friendsystem if you're using mysql
+    # Fill in your information to connect to your database
+    MySQL:
+      Host: "yourHost"
+      Port: "3306"
+      Database: "yourDatabase"
+      Username: "yourUsername"
+      Password: "yourPassword"
+
+#################################################
+#												#
+#	You are not authorized to sell this Plugin	#
+#	All rights reserved by HyChrod, 2016.		#
+#												#
+#################################################

@@ -1,0 +1,7 @@
+name: Party
+version: 1.0.1
+author: HyChrod
+main: de.HyChrod.Party.Party
+commands:
+  Party:
+    aliases: [party]
