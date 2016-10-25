@@ -12,6 +12,7 @@ import de.HyChrod.Party.Listener.ChannelListener;
 import de.HyChrod.Party.Listener.ChatListener;
 import de.HyChrod.Party.Listener.QuitListener;
 import de.HyChrod.Party.SQL.MySQL;
+import de.HyChrod.Party.Uti.AsyncMySQLReconnecter;
 import de.HyChrod.Party.Uti.UpdateChecker;
 import net.md_5.bungee.BungeeCord;
 import net.md_5.bungee.api.ChatColor;
@@ -49,10 +50,10 @@ public class Party extends Plugin {
 				System.out.println("");
 				return;
 			}
+			new AsyncMySQLReconnecter();
 		}
 		
 		registerClasses();
-		
 		System.out.println("Party | ---------------------------------------------");
 		if(FileManager.ConfigCfg.getBoolean("Party.CheckForUpdate") && !UpdateChecker.check()) {
 			System.out.println("Party | A new update of this plugin is available");
