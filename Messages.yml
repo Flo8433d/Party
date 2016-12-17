@@ -11,7 +11,8 @@ Messages:
       MessageV: "%PREFIX% &6/party accept <Player>"
       MessageVI: "%PREFIX% &6/party deny <Player>"
       MessageVII: "%PREFIX% &6/party toggle"
-      MessageVIII: "%PREFIX% ----------------------------------"
+      MessageVIII: "%PREFIX% &6/party list"
+      MessageIX: "%PREFIX% ----------------------------------"
     Invite:
       PlayerOffline: "%PREFIX% &cThe player seems to be offline!"
       AlreadyInParty: "%PREFIX% &cYou are already in a party!"
@@ -19,6 +20,7 @@ Messages:
       AlreadyInvited: "%PREFIX% &cYou already send an invite to this player!"
       ToManyPlayers: "%PREFIX% &cYour party has reached the maximum amount of players!"
       Invite: "%PREFIX% &aYou've send an invite to &3%PLAYER%&a!"
+      SendSelf: "%PREFIX% &cYou can't send yourself an invitation!"
       ToInvite: 
         MessageI: "%PREFIX% &c---------------------------------------------"
         MessageII: "%PREFIX% &9You get a party-invite from &3%PLAYER%&a!"
@@ -57,7 +59,10 @@ Messages:
       NotInParty: "%PREFIX% &cThis player is not in your party!"
       Broadcast: "%PREFIX% &3%PLAYER% &7was kicked out of your party!"
       Kick: "%PREFIX% &aYou kicked &3%PLAYER% &aout of your party!"
-      ToKick: "%PREFIX% &cYou were kicked out of the party!"
+    ToKick: "%PREFIX% &cYou were kicked out of the party!"
+    List:
+      NoParty: "%PREFIX% &cYou have to be in a party to perform this command!"
+      List: "%PREFIX% &aPlayers in your party: \n&a%LIST%"
     Toggle: "%PREFIX% &aYou toggled partyrequests!"
   PartyChatFormat: "%PREFIX% &3%PLAYER% &9>> &f%MESSAGE%"
   PartyChangeServer: "%PREFIX% &9Your party trys to connect to server: &3%SERVER%"

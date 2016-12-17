@@ -6,6 +6,8 @@
 */
 package de.HyChrod.Party;
 
+import java.io.IOException;
+
 import de.HyChrod.Party.Commands.PartyCommands;
 import de.HyChrod.Party.Listener.ChangeServerListener;
 import de.HyChrod.Party.Listener.ChannelListener;
@@ -13,19 +15,20 @@ import de.HyChrod.Party.Listener.ChatListener;
 import de.HyChrod.Party.Listener.QuitListener;
 import de.HyChrod.Party.SQL.MySQL;
 import de.HyChrod.Party.Uti.AsyncMySQLReconnecter;
+import de.HyChrod.Party.Uti.Metrics;
 import de.HyChrod.Party.Uti.UpdateChecker;
 import net.md_5.bungee.BungeeCord;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.plugin.Plugin;
 
 public class Party extends Plugin {
-	
+
 	public String prefix;
 	private static Party instance = null;
 	public static Boolean friends = false;
-	
+
 	private FileManager mgr = new FileManager();
-	
+
 	@Override
 	public void onEnable() {
 		this.mgr.createFolders(this);
@@ -35,13 +38,13 @@ public class Party extends Plugin {
 		}
 		this.prefix = ChatColor.translateAlternateColorCodes('&', FileManager.ConfigCfg.getString("Party.Prefix"));
 		instance = this;
-		
-		if(FileManager.ConfigCfg.getBoolean("Party.Friends2_0.Enable")) {
+
+		if (FileManager.ConfigCfg.getBoolean("Party.Friends2_0.Enable")) {
 			mgr.readMySQLData();
 			MySQL.connect();
 			friends = true;
-			
-			if(!MySQL.isConnected()) {
+
+			if (!MySQL.isConnected()) {
 				System.out.println("");
 				System.out.println("");
 				System.out.println("Party | Can't connect to mysql!");
@@ -52,10 +55,16 @@ public class Party extends Plugin {
 			}
 			new AsyncMySQLReconnecter();
 		}
-		
+
+		try {
+			Metrics metrics = new Metrics(this);
+			metrics.start();
+		} catch (IOException e) {
+		}
+
 		registerClasses();
 		System.out.println("Party | ---------------------------------------------");
-		if(FileManager.ConfigCfg.getBoolean("Party.CheckForUpdate") && !UpdateChecker.check()) {
+		if (FileManager.ConfigCfg.getBoolean("Party.CheckForUpdate") && !UpdateChecker.check()) {
 			System.out.println("Party | A new update of this plugin is available");
 			System.out.println("Party | Please update to the newest version!");
 			System.out.println("Party | You will get no support for this version!");
@@ -64,11 +73,11 @@ public class Party extends Plugin {
 		System.out.println("Party | The plugin was loaded successfully!");
 		System.out.println("Party | ");
 		System.out.println("Party | ---------------------------------------------");
-		
+
 		BungeeCord.getInstance().getPluginManager().registerListener(this, new ChannelListener(this));
-        BungeeCord.getInstance().registerChannel("Return");
+		BungeeCord.getInstance().registerChannel("Return");
 	}
-	
+
 	private void registerClasses() {
 		BungeeCord.getInstance().getPluginManager().registerCommand(this, new PartyCommands("Party", this));
 		BungeeCord.getInstance().getPluginManager().registerListener(this, new QuitListener(this));
@@ -78,13 +87,14 @@ public class Party extends Plugin {
 
 	@Override
 	public void onDisable() {
-		
+
 	}
-	
+
 	public String getString(String path) {
-		return ChatColor.translateAlternateColorCodes('&', FileManager.MessagesCfg.getString(path).replace("%PREFIX%", this.prefix));
+		return ChatColor.translateAlternateColorCodes('&',
+				FileManager.MessagesCfg.getString(path).replace("%PREFIX%", this.prefix));
 	}
-	
+
 	public static Party getInstance() {
 		return instance;
 	}

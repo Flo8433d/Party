@@ -7,6 +7,7 @@
 package de.HyChrod.Party.Commands;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 
 import de.HyChrod.Party.FileManager;
@@ -46,7 +47,28 @@ public class PartyCommands extends Command {
 				p.sendMessage(plugin.getString("Messages.Commands.Help.MessageVI"));
 				p.sendMessage(plugin.getString("Messages.Commands.Help.MessageVII"));
 				p.sendMessage(plugin.getString("Messages.Commands.Help.MessageVIII"));
+				p.sendMessage(plugin.getString("Messages.Commands.Help.MessageIX"));
 				return;
+			}
+			
+			if(args[0].equalsIgnoreCase("list")) {
+				if(args.length != 1) {
+					p.sendMessage(plugin.getString("Messages.Commands.WrongUsage").replace("%COMMAND%", "/party list"));
+					return;
+				}
+				
+				PlayerUtilitites pu = new PlayerUtilitites(p);
+				if(pu.isInParty()) {
+					PartyManager mgr = pu.getParty();
+					String pList = mgr.getLeader().getName() + ", ";
+					for(ProxiedPlayer pp : mgr.getMembers())
+						pList = pList + pp.getName() + ", ";
+					p.sendMessage(plugin.getString("Messages.Commands.List.List").replace("%LIST%", pList));
+					return;
+				} else {
+					p.sendMessage(plugin.getString("Messages.Commands.List.NoParty"));
+					return;
+				}
 			}
 			
 			if(args[0].equalsIgnoreCase("invite")) {
@@ -71,6 +93,10 @@ public class PartyCommands extends Command {
 				}
 				
 				ProxiedPlayer b = BungeeCord.getInstance().getPlayer(args[1]);
+				if(b.equals(p)) {
+					p.sendMessage(plugin.getString("Messages.Commands.Invite.SendSelf"));
+					return;
+				}
 				PlayerUtilitites bu = new PlayerUtilitites(b);
 				if(bu.isInParty()) {
 					p.sendMessage(plugin.getString("Messages.Commands.Invite.PlayerInParty"));
@@ -87,12 +113,12 @@ public class PartyCommands extends Command {
 				
 				if(Party.friends) {
 					if(FileManager.ConfigCfg.getBoolean("Party.Friends2_0.OnlyFriends")) {
-						if(!SQL_Manager.get(p.getUniqueId().toString(), "FRIENDS").contains(b.getUniqueId().toString())) {
+						if(!SQL_Manager.getFriends(p.getUniqueId().toString()).contains(b.getUniqueId().toString())) {
 							p.sendMessage(plugin.getString("Messages.Commands.Invite.Friends.NoFriends"));
 							return;
 						}
 					}
-					if(SQL_Manager.get(b.getUniqueId().toString(), "OPTIONS").contains("option_noParty") || disabled.contains(b)) {
+					if(SQL_Manager.getOptions(b.getUniqueId().toString()).contains("option_noParty") || disabled.contains(b)) {
 						p.sendMessage(plugin.getString("Messages.Commands.Invite.Friends.NoInvite"));
 						return;
 					}
@@ -253,6 +279,8 @@ public class PartyCommands extends Command {
 						
 						ProxiedPlayer b = BungeeCord.getInstance().getPlayer(args[1]);
 						mgr.removeMember(b);
+						PlayerUtilitites pB = new PlayerUtilitites(b);
+						pB.removeParty();
 						for(ProxiedPlayer members : mgr.getMembers()) {
 							members.sendMessage(plugin.getString("Messages.Commands.Kick.Broadcast").replace("%PLAYER%", b.getName()));
 						}
@@ -268,13 +296,13 @@ public class PartyCommands extends Command {
 				return;
 			}
 			
-			if(args[0].equalsIgnoreCase("toggle")) {
+			if(args[0].equalsIgnoreCase("toggle")){
 				if(args.length != 1) {
 					p.sendMessage(plugin.getString("Messages.Commands.WrongUsage").replace("%COMMAND%", "/party toggle"));
 					return;
 				}
 				if(Party.friends) {
-					LinkedList<String> hash = SQL_Manager.get(p.getUniqueId().toString(), "OPTIONS");
+					List<String> hash = SQL_Manager.getOptions(p.getUniqueId().toString());
 					if(hash.contains("option_noParty"))
 						hash.remove("option_noParty");
 					else

@@ -78,11 +78,21 @@ public class FileManager {
 		if (!MessagesFile.exists()) {
             try (InputStream in = plugin.getResourceAsStream("Messages.yml")) {
                 Files.copy(in, MessagesFile.toPath());
+                
+                if(MessagesCfg.getString("Messages.Commands.List.List") == null) {
+                	MessagesCfg.set("Messages.Commands.List.List", "%PREFIX% &aPlayers in your party: \n&a%LIST%");
+                	MessagesCfg.set("Messagss.Commands.List.NoParty", "%PREFIX% &cYou have to be in a party to perform this command!");
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        } else {
+        	Configuration cfg = getConfig(MessagesFile);
+        	if(cfg.getString("Messages.Commands.Invite.SendSelf") == null) {
+        		MessagesFile.delete();
+        		createFolders(plugin);
+        	}
         }
-		
 		relaodConfigs();
 	}
 	

@@ -79,12 +79,12 @@ public class ChannelListener implements Listener {
 						
 						if(Party.friends) {
 							if(FileManager.ConfigCfg.getBoolean("Party.Friends2_0.OnlyFriends")) {
-								if(!SQL_Manager.get(p.getUniqueId().toString(), "FRIENDS").contains(b.getUniqueId().toString())) {
+								if(!SQL_Manager.getFriends(p.getUniqueId().toString()).contains(b.getUniqueId().toString())) {
 									p.sendMessage(plugin.getString("Messages.Commands.Invite.Friends.NoFriends"));
 									return;
 								}
 							}
-							if(SQL_Manager.get(b.getUniqueId().toString(), "OPTIONS").contains("option_noParty") || PartyCommands.disabled.contains(b)) {
+							if(SQL_Manager.getOptions(b.getUniqueId().toString()).contains("option_noParty") || PartyCommands.disabled.contains(b)) {
 								p.sendMessage(plugin.getString("Messages.Commands.Invite.Friends.NoInvite"));
 								return;
 							}
