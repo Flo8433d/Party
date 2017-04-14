@@ -26,7 +26,7 @@ Friends-System
 | /setlobby | Set the lobby to the players location | TimeSG.Commands.Setup |
 | /createmap <Name> | Creates a map | TimeSG.Commands.Setup |
 | /deletemap <Name> | Deletes a map  | TimeSG.Commands.Setup |
-| /setspectator <Name> | Sets the spectator-spawn to the players location | - |
+| /setspectator <Name> | Sets the spectator-spawn to the players location | TimeSG.Commands.Setup |
 | /addspawn <Name> | Adds a spawn  | TimeSG.Commands.Setup |
 | /sethologram | Sets the position for the holograms  | TimeSG.Commands.Setup |
 | /buildmode | Toggles the possibillity to build  | TimeSG.Commands.Buildmode |
