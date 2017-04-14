@@ -22,9 +22,15 @@ Friends-System
 
 | Commands      | Description   | Permission  |
 | ------------- |:-------------:| -----:|
-| /party help     | Shows all commands | - |
-| /party invite <Player>      | Sends a party-invite to the player | - |
-| /party accept <Player> | Accepts an invite | - |
-| /party deny <Player> | Denies an invite  | - |
-| /party kick <Player> | Kicks a player out of your party | - |
-| /party toggle | Toggles the party invites  | - |
+| /timesg | Shows all commands | - |
+| /setlobby | Set the lobby to the players location | TimeSG.Commands.Setup |
+| /createmap <Name> | Creates a map | TimeSG.Commands.Setup |
+| /deletemap <Name> | Deletes a map  | TimeSG.Commands.Setup |
+| /setspectator <Name> | Sets the spectator-spawn to the players location | - |
+| /addspawn <Name> | Adds a spawn  | TimeSG.Commands.Setup |
+| /sethologram | Sets the position for the holograms  | TimeSG.Commands.Setup |
+| /buildmode | Toggles the possibillity to build  | TimeSG.Commands.Buildmode |
+| /fix | Fix your position  | TimeSG.Commands.Fix |
+| /start | Reduces the counter to 10 seconds  | TimeSG.Commands.Start |
+| /forcemap | Forces the map | TimeSG.Commands.Forcemap |
+| /stats | Shows your stats  | - |
