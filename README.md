@@ -34,3 +34,4 @@ Friends-System
 | /start | Reduces the counter to 10 seconds  | TimeSG.Commands.Start |
 | /forcemap | Forces the map | TimeSG.Commands.Forcemap |
 | /stats | Shows your stats  | - |
+| /stats <Player> | Shows the stats of chosen the player | TimeSG.Stats.Others |
