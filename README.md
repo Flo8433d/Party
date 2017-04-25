@@ -30,9 +30,14 @@ Friends-System
 | /addspawn [Name] | Adds a spawn  | TimeSG.Commands.Setup |
 | /removespawn [Name] | Removes a spawn | TimeSG.Commands.Setup |
 | /sethologram | Sets the position for the holograms  | TimeSG.Commands.Setup |
+| /setranking [Rank] [armorstand / sign] | Sets the armorstand/sign for a rank | TimeSG.Commands.Setup |
+| /removeranking [Rank] [armorstand / sign] | Removes the armorstand/sign for a rank | TimeSG.Commands.Setup |
+| /savearmorstand | Saves the current loadout of a armorstand | TimeSG.Commands.Setup |
 | /buildmode | Toggles the possibillity to build  | TimeSG.Commands.Buildmode |
 | /fix | Fix your position  | TimeSG.Commands.Fix |
 | /start | Reduces the counter to 10 seconds  | TimeSG.Commands.Start |
 | /forcemap | Forces the map | TimeSG.Commands.Forcemap |
 | /stats | Shows your stats  | - |
 | /stats [Player] | Shows the stats of chosen the player | TimeSG.Stats.Others |
+| /stats #[Rank] | Shows the stats of a specified rabk | TimeSG.Stats.Others |
+| /top | Shows the top players | TimeSG.Commands.Top |
