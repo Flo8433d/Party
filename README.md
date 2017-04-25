@@ -32,7 +32,7 @@ Friends-System
 | /sethologram | Sets the position for the holograms  | TimeSG.Commands.Setup |
 | /setranking [Rank] [armorstand / sign] | Sets the armorstand/sign for a rank | TimeSG.Commands.Setup |
 | /removeranking [Rank] [armorstand / sign] | Removes the armorstand/sign for a rank | TimeSG.Commands.Setup |
-| /savearmorstand | Saves the current loadout of a armorstand | TimeSG.Commands.Setup |
+| /savearmorstand [Rank] | Saves the current loadout of a armorstand | TimeSG.Commands.Setup |
 | /buildmode | Toggles the possibillity to build  | TimeSG.Commands.Buildmode |
 | /fix | Fix your position  | TimeSG.Commands.Fix |
 | /start | Reduces the counter to 10 seconds  | TimeSG.Commands.Start |
