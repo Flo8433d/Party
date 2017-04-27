@@ -39,5 +39,5 @@ Friends-System
 | /forcemap | Forces the map | TimeSG.Commands.Forcemap |
 | /stats | Shows your stats  | - |
 | /stats [Player] | Shows the stats of chosen the player | TimeSG.Stats.Others |
-| /stats #[Rank] | Shows the stats of a specified rabk | TimeSG.Stats.Others |
+| /stats #[Rank] | Shows the stats of a specified rank | TimeSG.Stats.Others |
 | /top | Shows the top players | TimeSG.Commands.Top |
