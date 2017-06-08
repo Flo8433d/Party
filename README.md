@@ -17,27 +17,3 @@ Friends-System
 7. Fill out both MySQl.yml's
 8. Restart both servers
 9. The plugin should work now
-
-# Commands & Permissions
-
-| Commands      | Description   | Permission  |
-| ------------- |:-------------:| -----:|
-| /timesg | Shows all commands | - |
-| /setlobby | Set the lobby to the players location | TimeSG.Commands.Setup |
-| /createmap [Name] | Creates a map | TimeSG.Commands.Setup |
-| /deletemap [Name] | Deletes a map  | TimeSG.Commands.Setup |
-| /setspectator [Name] | Sets the spectator-spawn to the players location | TimeSG.Commands.Setup |
-| /addspawn [Name] | Adds a spawn  | TimeSG.Commands.Setup |
-| /removespawn [Name] | Removes a spawn | TimeSG.Commands.Setup |
-| /sethologram | Sets the position for the holograms  | TimeSG.Commands.Setup |
-| /setranking [Rank] [armorstand / sign] | Sets the armorstand/sign for a rank | TimeSG.Commands.Setup |
-| /removeranking [Rank] [armorstand / sign] | Removes the armorstand/sign for a rank | TimeSG.Commands.Setup |
-| /savearmorstand [Rank] | Saves the current loadout of a armorstand | TimeSG.Commands.Setup |
-| /buildmode | Toggles the possibillity to build  | TimeSG.Commands.Buildmode |
-| /fix | Fix your position  | TimeSG.Commands.Fix |
-| /start | Reduces the counter to 10 seconds  | TimeSG.Commands.Start |
-| /forcemap | Forces the map | TimeSG.Commands.Forcemap |
-| /stats | Shows your stats  | - |
-| /stats [Player] | Shows the stats of chosen the player | TimeSG.Stats.Others |
-| /stats #[Rank] | Shows the stats of a specified rank | TimeSG.Stats.Others |
-| /top | Shows the top players | TimeSG.Commands.Top |
